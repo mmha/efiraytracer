@@ -1,0 +1,3 @@
+[submodule "3rdparty/lmi"]
+	path = 3rdparty/lmi
+	url = https://github.com/mmha/lmi.git

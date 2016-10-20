@@ -1,0 +1,4 @@
+build/
+hostedbuild/
+.idea/
+.directory

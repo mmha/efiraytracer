@@ -1,0 +1,12 @@
+if(HOSTED)
+	add_executable(raytracer hostedmain.cpp Camera.cpp Math.cpp Primitive.cpp Shader.cpp)
+	find_package(SDL2 REQUIRED)
+	target_link_libraries(raytracer PRIVATE SDL2)
+else()
+	find_package(efilib REQUIRED)
+	add_executable(raytracer main.cpp Camera.cpp ABI.cpp Math.cpp Primitive.cpp Shader.cpp)
+	target_link_libraries(raytracer PRIVATE efilib::efilib)
+endif()
+
+target_link_libraries(raytracer PRIVATE lmi gcc)
+target_compile_options(raytracer PRIVATE -O3 -march=core2 -ffast-math)
