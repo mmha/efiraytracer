@@ -15,20 +15,21 @@ float GGX(vec3 halfway, vec3 normal, float roughness)
 
 vec3 BRDF(vec3 lightPos, vec3 lightColor, vec3 pos, vec3 normal, vec3 albedo, float roughness, bool metal)
 {
+	const vec3 ambient(0.05);
 	vec3 relLightPos = lightPos - pos;
 	vec3 halfway = normalize(relLightPos - pos);
 	vec3 l = normalize(pos * -1);
 	vec3 F = metal ? lightColor * fresnel(albedo, l, normal) : vec3(0.04);
-
+	
 	if(dot(normal, normalize(relLightPos)) < 0.0)
 	{
-		return {0, 0, 0};
+		return albedo * ambient;
 	}
 
 	vec3 specular = F * GGX(halfway, normal, roughness) / (4.0f * dot(l, halfway) * dot(l, halfway));
 	vec3 diffuse = metal ? vec3(0) : (vec3(1, 1, 1) - F) / M_PI;	// Lambertian BRDF
 
-	return specular + albedo * diffuse + albedo * 0.05;	// vec3(0.05));
+	return specular + albedo * diffuse + albedo * ambient;
 }
 
 /**

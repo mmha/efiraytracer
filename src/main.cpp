@@ -11,7 +11,10 @@ void exitBootServices(EFI_BOOT_SERVICES *bootServices, EFI_HANDLE imageHandle);
 
 extern "C"[[noreturn]] EFI_STATUS EFIAPI efi_main(IN EFI_HANDLE imageHandle, IN EFI_SYSTEM_TABLE *SystemTable)
 {
-	Framebuffer<800, 600, uint32_t> f(SystemTable->BootServices, SystemTable->ConOut);
+	// Edit this variable to set the resolution
+	constexpr lmi::vec2i resolution{800, 600};
+
+	Framebuffer<resolution[0], resolution[1], uint32_t> f(SystemTable->BootServices, SystemTable->ConOut);
 
 	exitBootServices(SystemTable->BootServices, imageHandle);
 
@@ -19,7 +22,7 @@ extern "C"[[noreturn]] EFI_STATUS EFIAPI efi_main(IN EFI_HANDLE imageHandle, IN 
 	f.swapToScreen();
 
 	// 1.03 rad = ~60 deg
-	Camera cam(1.03f, {800, 600}, {0, 0, 0}, lmi::Quat(1, 0, 0, 0));
+	Camera cam(1.03f, resolution, {0, 0, 0}, lmi::Quat(1, 0, 0, 0));
 
 	auto t = [] {
 		uint64_t a, d;
