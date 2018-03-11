@@ -3,7 +3,7 @@ efiraytracer
 
 ![Screenshot](/static/screenshot.png)
 
-The title says it all: A proof of concept raytracer for bare metal x86\_64 with an UEFI firmware. It's full of rough edges, but should render a sphere at 800x600 pixels using a PBR shader.
+The title says it all: A proof of concept raymarcher for bare metal x86\_64 with an UEFI firmware. It's full of rough edges, but should render a sphere at 800x600 pixels using a PBR shader.
 
 Running it
 ----------

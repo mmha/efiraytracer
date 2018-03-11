@@ -3,8 +3,7 @@
 #include "Ray.h"
 #include <lmi/lmi.h>
 
-class Camera
-{
+class Camera {
 	public:
 	/**
 	 * Construct a pinhole camera suitable for offline raytracing

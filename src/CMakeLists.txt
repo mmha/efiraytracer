@@ -8,5 +8,5 @@ else()
 	target_link_libraries(raytracer PRIVATE efilib::efilib)
 endif()
 
-target_link_libraries(raytracer PRIVATE lmi gcc)
-target_compile_options(raytracer PRIVATE -O3 -march=core2 -ffast-math)
+target_link_libraries(raytracer PRIVATE lmi gcc callable_traits tl)
+target_compile_options(raytracer PRIVATE -O3 -march=core2 -ffast-math -std=gnu++17 -fdiagnostics-color=always)

@@ -2,8 +2,7 @@
 
 #include <lmi/lmi.h>
 
-struct Fragment
-{
+struct Fragment {
 	lmi::vec3 position;
 	lmi::vec3 normal;
 };

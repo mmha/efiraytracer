@@ -2,8 +2,7 @@
 
 using namespace lmi;
 
-Camera::Camera(float fovy, vec2i resolution, const vec3 &position, const Quat &orientation)
-{
+Camera::Camera(float fovy, vec2i resolution, const vec3 &position, const Quat &orientation) {
 	resolution_ = resolution;
 	viewMat_ = translate(position.x, position.y, position.z) * static_cast<mat4>(orientation);
 	invViewMat_ = inverse(viewMat_);
@@ -13,8 +12,7 @@ Camera::Camera(float fovy, vec2i resolution, const vec3 &position, const Quat &o
 	invProjMat_ = inverse(projMat_);
 }
 
-Ray Camera::rayFromPixel(vec2i pixel)
-{
+Ray Camera::rayFromPixel(vec2i pixel) {
 	// Search for point on the far plane
 	vec4 tmpDest(invProjMat_ * vec4(2.0f * pixel.x / resolution_.x - 1, 2.0f * pixel.y / resolution_.y - 1, -1, 1));
 	tmpDest /= tmpDest.w;
@@ -28,13 +26,12 @@ Ray Camera::rayFromPixel(vec2i pixel)
 	return {origin, minT, direction, maxT};
 }
 
-vec3 Camera::getPosition() const
-{
+vec3 Camera::getPosition() const {
 	vec4 v;
 	auto pos = viewMat_ * v * -1;
 	return vec3(pos.x, pos.y, pos.z);
 }
 
 
-const float Camera::zNear = 0.1;
+const float Camera::zNear = 0.1f;
 const float Camera::zFar = 100;

@@ -1,0 +1,9 @@
+pandocopts =
+pandoc   = pandoc
+
+rule make_revealjs_presentation
+ command = $pandoc -t revealjs -V theme=moon --mathjax -s -o $out $in
+
+build index.html: make_revealjs_presentation slides.md
+ description = Converting Markdown to reveal.js HTML...
+default index.html

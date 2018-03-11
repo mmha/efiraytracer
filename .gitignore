@@ -1,4 +1,7 @@
-build/
+build*/
 hostedbuild/
 .idea/
 .directory
+.ninja_*
+*.autosave
+CMakeLists.txt.user
