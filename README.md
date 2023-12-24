@@ -18,7 +18,7 @@ qemu-system-x86_64 -bios ovmf_x64.bin -hda raytracer.img
 Building it
 -----------
 
-You need a Linux with a `x86_64-w64-mingw32-g++` cross compiler, GNU efilib and CMake. The build system will produce a EFI executable.
+You need a Linux with a `x86_64-w64-mingw32-g++` cross compiler, GNU efilib and CMake. The build system will produce an EFI executable.
 
 Create a `build` directory as usual, but select the CMake Toolchain for the UEFI target. Then build it using `make`:
 ```bash
