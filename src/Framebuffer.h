@@ -24,7 +24,7 @@ class Framebuffer {
 								 return reinterpret_cast<EFI_GRAPHICS_OUTPUT_PROTOCOL *>(get<0>(opened_gop));
 							 });
 		if(!maybe_gop) {
-			conOut->OutputString(conOut, u"Failed to create an Graphics Out Protocol Instance\r\n"_C16);
+			conOut->OutputString(conOut, u"Failed to create a Graphics Out Protocol Instance\r\n"_C16);
 		}
 
 		gop = maybe_gop.value();
@@ -46,7 +46,7 @@ class Framebuffer {
 		}
 		// clang-format on
 		if(!succeeded) {
-			conOut->OutputString(conOut, u"Failed to set video mode\r\n"_C16);
+			conOut->OutputString(conOut, u"Failed to enter graphics mode\r\n"_C16);
 		}
 	}
 
